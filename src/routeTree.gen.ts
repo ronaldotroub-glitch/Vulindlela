@@ -16,6 +16,7 @@ import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardResearchRouteImport } from './routes/dashboard/research'
 import { Route as DashboardPlannerRouteImport } from './routes/dashboard/planner'
 import { Route as DashboardNotesRouteImport } from './routes/dashboard/notes'
+import { Route as DashboardHistoryRouteImport } from './routes/dashboard/history'
 import { Route as DashboardEmailRouteImport } from './routes/dashboard/email'
 import { Route as DashboardChatRouteImport } from './routes/dashboard/chat'
 import { Route as AuthRegisterRouteImport } from './routes/auth/register'
@@ -56,6 +57,11 @@ const DashboardPlannerRoute = DashboardPlannerRouteImport.update({
 const DashboardNotesRoute = DashboardNotesRouteImport.update({
   id: '/notes',
   path: '/notes',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardHistoryRoute = DashboardHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardEmailRoute = DashboardEmailRouteImport.update({
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/auth/register': typeof AuthRegisterRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
+  '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/notes': typeof DashboardNotesRoute
   '/dashboard/planner': typeof DashboardPlannerRoute
   '/dashboard/research': typeof DashboardResearchRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/auth/register': typeof AuthRegisterRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
+  '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/notes': typeof DashboardNotesRoute
   '/dashboard/planner': typeof DashboardPlannerRoute
   '/dashboard/research': typeof DashboardResearchRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/auth/register': typeof AuthRegisterRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
+  '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/notes': typeof DashboardNotesRoute
   '/dashboard/planner': typeof DashboardPlannerRoute
   '/dashboard/research': typeof DashboardResearchRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/dashboard/chat'
     | '/dashboard/email'
+    | '/dashboard/history'
     | '/dashboard/notes'
     | '/dashboard/planner'
     | '/dashboard/research'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/dashboard/chat'
     | '/dashboard/email'
+    | '/dashboard/history'
     | '/dashboard/notes'
     | '/dashboard/planner'
     | '/dashboard/research'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/dashboard/chat'
     | '/dashboard/email'
+    | '/dashboard/history'
     | '/dashboard/notes'
     | '/dashboard/planner'
     | '/dashboard/research'
@@ -237,6 +249,13 @@ declare module '@tanstack/react-router' {
       path: '/notes'
       fullPath: '/dashboard/notes'
       preLoaderRoute: typeof DashboardNotesRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/history': {
+      id: '/dashboard/history'
+      path: '/history'
+      fullPath: '/dashboard/history'
+      preLoaderRoute: typeof DashboardHistoryRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/email': {
@@ -303,6 +322,7 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 interface DashboardRouteRouteChildren {
   DashboardChatRoute: typeof DashboardChatRoute
   DashboardEmailRoute: typeof DashboardEmailRoute
+  DashboardHistoryRoute: typeof DashboardHistoryRoute
   DashboardNotesRoute: typeof DashboardNotesRoute
   DashboardPlannerRoute: typeof DashboardPlannerRoute
   DashboardResearchRoute: typeof DashboardResearchRoute
@@ -312,6 +332,7 @@ interface DashboardRouteRouteChildren {
 const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardChatRoute: DashboardChatRoute,
   DashboardEmailRoute: DashboardEmailRoute,
+  DashboardHistoryRoute: DashboardHistoryRoute,
   DashboardNotesRoute: DashboardNotesRoute,
   DashboardPlannerRoute: DashboardPlannerRoute,
   DashboardResearchRoute: DashboardResearchRoute,
