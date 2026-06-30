@@ -50,10 +50,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "WorkPilot AI — Your AI Workplace Productivity Assistant" },
+      { title: "ActivePilot AI — Your AI Workplace Productivity Assistant" },
       { name: "description", content: "Automate emails, meeting summaries, task planning, research, and workplace conversations with one intelligent AI assistant." },
-      { name: "author", content: "WorkPilot AI" },
-      { property: "og:title", content: "WorkPilot AI — Your AI Workplace Productivity Assistant" },
+      { name: "author", content: "ActivePilot AI" },
+      { property: "og:title", content: "ActivePilot AI — Your AI Workplace Productivity Assistant" },
       { property: "og:description", content: "Automate emails, meeting summaries, task planning, research, and workplace conversations with one intelligent assistant." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

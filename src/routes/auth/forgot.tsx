@@ -4,7 +4,7 @@ import { Mail, Loader2, Check } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/auth/forgot")({
-  head: () => ({ meta: [{ title: "Reset password — WorkPilot AI" }] }),
+  head: () => ({ meta: [{ title: "Reset password — ActivePilot AI" }] }),
   component: Forgot,
 });
 

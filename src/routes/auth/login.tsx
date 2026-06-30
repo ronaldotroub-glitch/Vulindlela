@@ -5,7 +5,7 @@ import { setUser } from "@/lib/auth";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/auth/login")({
-  head: () => ({ meta: [{ title: "Log in — WorkPilot AI" }] }),
+  head: () => ({ meta: [{ title: "Log in — ActivePilot AI" }] }),
   component: Login,
 });
 
@@ -27,7 +27,7 @@ function Login() {
   return (
     <div>
       <h1 className="text-2xl font-bold">Welcome back</h1>
-      <p className="text-sm text-muted-foreground mt-1">Log in to your WorkPilot AI workspace.</p>
+      <p className="text-sm text-muted-foreground mt-1">Log in to your ActivePilot AI workspace.</p>
       <div className="mt-6 grid grid-cols-3 gap-2">
         {[
           { name: "Google", c: "#4285F4" },
@@ -58,7 +58,7 @@ function Login() {
         </button>
       </form>
       <p className="text-xs text-muted-foreground text-center mt-6">
-        New to WorkPilot? <Link to="/auth/register" className="text-primary hover:underline">Create an account</Link>
+        New to ActivePilot? <Link to="/auth/register" className="text-primary hover:underline">Create an account</Link>
       </p>
     </div>
   );

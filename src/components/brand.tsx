@@ -11,7 +11,7 @@ export function Brand({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
           <path d="M12 22V12M4 7l8 5 8-5" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
         </svg>
       </div>
-      <span className={`font-bold tracking-tight ${t} text-foreground`}>WorkPilot<span className="text-primary"> AI</span></span>
+      <span className={`font-bold tracking-tight ${t} text-foreground`}>ActivePilot<span className="text-primary"> AI</span></span>
     </Link>
   );
 }
