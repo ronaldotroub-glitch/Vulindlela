@@ -16,6 +16,7 @@ import { Route as DashboardPlannerRouteImport } from './routes/dashboard/planner
 import { Route as DashboardNotesRouteImport } from './routes/dashboard/notes'
 import { Route as DashboardEmailRouteImport } from './routes/dashboard/email'
 import { Route as DashboardChatRouteImport } from './routes/dashboard/chat'
+import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
 const AuthRouteRoute = AuthRouteRouteImport.update({
@@ -53,6 +54,11 @@ const DashboardChatRoute = DashboardChatRouteImport.update({
   path: '/dashboard/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
@@ -61,8 +67,9 @@ const ApiChatRoute = ApiChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRouteRoute
+  '/auth': typeof AuthRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/auth/login': typeof AuthLoginRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
   '/dashboard/notes': typeof DashboardNotesRoute
@@ -71,8 +78,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/auth': typeof AuthRouteRoute
+  '/auth': typeof AuthRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/auth/login': typeof AuthLoginRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
   '/dashboard/notes': typeof DashboardNotesRoute
@@ -82,8 +90,9 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/auth': typeof AuthRouteRoute
+  '/auth': typeof AuthRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/auth/login': typeof AuthLoginRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
   '/dashboard/notes': typeof DashboardNotesRoute
@@ -96,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/api/chat'
+    | '/auth/login'
     | '/dashboard/chat'
     | '/dashboard/email'
     | '/dashboard/notes'
@@ -106,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/api/chat'
+    | '/auth/login'
     | '/dashboard/chat'
     | '/dashboard/email'
     | '/dashboard/notes'
@@ -116,6 +127,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/api/chat'
+    | '/auth/login'
     | '/dashboard/chat'
     | '/dashboard/email'
     | '/dashboard/notes'
@@ -125,7 +137,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AuthRouteRoute: typeof AuthRouteRoute
+  AuthRouteRoute: typeof AuthRouteRouteWithChildren
   ApiChatRoute: typeof ApiChatRoute
   DashboardChatRoute: typeof DashboardChatRoute
   DashboardEmailRoute: typeof DashboardEmailRoute
@@ -185,6 +197,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
     '/api/chat': {
       id: '/api/chat'
       path: '/api/chat'
@@ -195,9 +214,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthRouteRouteChildren {
+  AuthLoginRoute: typeof AuthLoginRoute
+}
+
+const AuthRouteRouteChildren: AuthRouteRouteChildren = {
+  AuthLoginRoute: AuthLoginRoute,
+}
+
+const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
+  AuthRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AuthRouteRoute: AuthRouteRoute,
+  AuthRouteRoute: AuthRouteRouteWithChildren,
   ApiChatRoute: ApiChatRoute,
   DashboardChatRoute: DashboardChatRoute,
   DashboardEmailRoute: DashboardEmailRoute,
