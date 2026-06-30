@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
 import { Route as AuthRouteRouteImport } from './routes/auth/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
 import { Route as DashboardResearchRouteImport } from './routes/dashboard/research'
 import { Route as DashboardPlannerRouteImport } from './routes/dashboard/planner'
 import { Route as DashboardNotesRouteImport } from './routes/dashboard/notes'
@@ -36,6 +37,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardResearchRoute = DashboardResearchRouteImport.update({
   id: '/research',
@@ -96,11 +102,11 @@ export interface FileRoutesByFullPath {
   '/dashboard/notes': typeof DashboardNotesRoute
   '/dashboard/planner': typeof DashboardPlannerRoute
   '/dashboard/research': typeof DashboardResearchRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
-  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
@@ -110,6 +116,7 @@ export interface FileRoutesByTo {
   '/dashboard/notes': typeof DashboardNotesRoute
   '/dashboard/planner': typeof DashboardPlannerRoute
   '/dashboard/research': typeof DashboardResearchRoute
+  '/dashboard': typeof DashboardIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -125,6 +132,7 @@ export interface FileRoutesById {
   '/dashboard/notes': typeof DashboardNotesRoute
   '/dashboard/planner': typeof DashboardPlannerRoute
   '/dashboard/research': typeof DashboardResearchRoute
+  '/dashboard/': typeof DashboardIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -141,11 +149,11 @@ export interface FileRouteTypes {
     | '/dashboard/notes'
     | '/dashboard/planner'
     | '/dashboard/research'
+    | '/dashboard/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/auth'
-    | '/dashboard'
     | '/api/chat'
     | '/auth/forgot'
     | '/auth/login'
@@ -155,6 +163,7 @@ export interface FileRouteTypes {
     | '/dashboard/notes'
     | '/dashboard/planner'
     | '/dashboard/research'
+    | '/dashboard'
   id:
     | '__root__'
     | '/'
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/dashboard/notes'
     | '/dashboard/planner'
     | '/dashboard/research'
+    | '/dashboard/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -200,6 +210,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/research': {
       id: '/dashboard/research'
@@ -289,6 +306,7 @@ interface DashboardRouteRouteChildren {
   DashboardNotesRoute: typeof DashboardNotesRoute
   DashboardPlannerRoute: typeof DashboardPlannerRoute
   DashboardResearchRoute: typeof DashboardResearchRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
@@ -297,6 +315,7 @@ const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardNotesRoute: DashboardNotesRoute,
   DashboardPlannerRoute: DashboardPlannerRoute,
   DashboardResearchRoute: DashboardResearchRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
 }
 
 const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
