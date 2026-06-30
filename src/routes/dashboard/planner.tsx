@@ -7,8 +7,9 @@ import { ListTodo, Loader2 } from "lucide-react";
 import { planTasks } from "@/lib/ai.functions";
 import { PageHeader, Field, inputCls, btnPrimary, MarkdownPanel } from "@/components/page-header";
 import { toast } from "sonner";
+import { addHistory } from "@/lib/history";
 
-export const Route = createFileRoute("/planner")({
+export const Route = createFileRoute("/dashboard/planner")({
   head: () => ({
     meta: [
       { title: "AI Task Planner — Workly AI" },
@@ -25,6 +26,7 @@ function PlannerPage() {
   const [hours, setHours] = useState("8");
   const m = useMutation({
     mutationFn: () => fn({ data: { tasks, horizon, workingHours: hours } }),
+    onSuccess: (d: { text: string }) => addHistory({ kind: "planner", title: `${horizon === 'day' ? 'Daily' : 'Weekly'} plan`, preview: tasks.slice(0, 120), content: d.text }),
     onError: (e: Error) => toast.error(e.message),
   });
 
