@@ -19,6 +19,7 @@ import { Route as DashboardNotesRouteImport } from './routes/dashboard/notes'
 import { Route as DashboardHistoryRouteImport } from './routes/dashboard/history'
 import { Route as DashboardEmailRouteImport } from './routes/dashboard/email'
 import { Route as DashboardChatRouteImport } from './routes/dashboard/chat'
+import { Route as DashboardAnalyticsRouteImport } from './routes/dashboard/analytics'
 import { Route as AuthRegisterRouteImport } from './routes/auth/register'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as AuthForgotRouteImport } from './routes/auth/forgot'
@@ -74,6 +75,11 @@ const DashboardChatRoute = DashboardChatRouteImport.update({
   path: '/chat',
   getParentRoute: () => DashboardRouteRoute,
 } as any)
+const DashboardAnalyticsRoute = DashboardAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
 const AuthRegisterRoute = AuthRegisterRouteImport.update({
   id: '/register',
   path: '/register',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
   '/dashboard/history': typeof DashboardHistoryRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
   '/dashboard/history': typeof DashboardHistoryRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
   '/dashboard/history': typeof DashboardHistoryRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/auth/forgot'
     | '/auth/login'
     | '/auth/register'
+    | '/dashboard/analytics'
     | '/dashboard/chat'
     | '/dashboard/email'
     | '/dashboard/history'
@@ -168,6 +178,7 @@ export interface FileRouteTypes {
     | '/auth/forgot'
     | '/auth/login'
     | '/auth/register'
+    | '/dashboard/analytics'
     | '/dashboard/chat'
     | '/dashboard/email'
     | '/dashboard/history'
@@ -184,6 +195,7 @@ export interface FileRouteTypes {
     | '/auth/forgot'
     | '/auth/login'
     | '/auth/register'
+    | '/dashboard/analytics'
     | '/dashboard/chat'
     | '/dashboard/email'
     | '/dashboard/history'
@@ -272,6 +284,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardChatRouteImport
       parentRoute: typeof DashboardRouteRoute
     }
+    '/dashboard/analytics': {
+      id: '/dashboard/analytics'
+      path: '/analytics'
+      fullPath: '/dashboard/analytics'
+      preLoaderRoute: typeof DashboardAnalyticsRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
     '/auth/register': {
       id: '/auth/register'
       path: '/register'
@@ -320,6 +339,7 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
 )
 
 interface DashboardRouteRouteChildren {
+  DashboardAnalyticsRoute: typeof DashboardAnalyticsRoute
   DashboardChatRoute: typeof DashboardChatRoute
   DashboardEmailRoute: typeof DashboardEmailRoute
   DashboardHistoryRoute: typeof DashboardHistoryRoute
@@ -330,6 +350,7 @@ interface DashboardRouteRouteChildren {
 }
 
 const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
+  DashboardAnalyticsRoute: DashboardAnalyticsRoute,
   DashboardChatRoute: DashboardChatRoute,
   DashboardEmailRoute: DashboardEmailRoute,
   DashboardHistoryRoute: DashboardHistoryRoute,
