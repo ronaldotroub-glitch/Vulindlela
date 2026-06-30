@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthRouteRouteImport } from './routes/auth/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardResearchRouteImport } from './routes/dashboard/research'
 import { Route as DashboardPlannerRouteImport } from './routes/dashboard/planner'
@@ -17,6 +18,11 @@ import { Route as DashboardEmailRouteImport } from './routes/dashboard/email'
 import { Route as DashboardChatRouteImport } from './routes/dashboard/chat'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
+const AuthRouteRoute = AuthRouteRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -55,6 +61,7 @@ const ApiChatRoute = ApiChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRouteRoute
   '/api/chat': typeof ApiChatRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRouteRoute
   '/api/chat': typeof ApiChatRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRouteRoute
   '/api/chat': typeof ApiChatRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/api/chat'
     | '/dashboard/chat'
     | '/dashboard/email'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/api/chat'
     | '/dashboard/chat'
     | '/dashboard/email'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/auth'
     | '/api/chat'
     | '/dashboard/chat'
     | '/dashboard/email'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRouteRoute: typeof AuthRouteRoute
   ApiChatRoute: typeof ApiChatRoute
   DashboardChatRoute: typeof DashboardChatRoute
   DashboardEmailRoute: typeof DashboardEmailRoute
@@ -123,6 +136,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRouteRoute: AuthRouteRoute,
   ApiChatRoute: ApiChatRoute,
   DashboardChatRoute: DashboardChatRoute,
   DashboardEmailRoute: DashboardEmailRoute,
