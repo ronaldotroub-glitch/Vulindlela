@@ -18,6 +18,7 @@ import { Route as DashboardEmailRouteImport } from './routes/dashboard/email'
 import { Route as DashboardChatRouteImport } from './routes/dashboard/chat'
 import { Route as AuthRegisterRouteImport } from './routes/auth/register'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
+import { Route as AuthForgotRouteImport } from './routes/auth/forgot'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
 const AuthRouteRoute = AuthRouteRouteImport.update({
@@ -65,6 +66,11 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
   path: '/login',
   getParentRoute: () => AuthRouteRoute,
 } as any)
+const AuthForgotRoute = AuthForgotRouteImport.update({
+  id: '/forgot',
+  path: '/forgot',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
 const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
   '/dashboard/chat': typeof DashboardChatRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
   '/dashboard/chat': typeof DashboardChatRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRoute
   '/dashboard/chat': typeof DashboardChatRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/api/chat'
+    | '/auth/forgot'
     | '/auth/login'
     | '/auth/register'
     | '/dashboard/chat'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/api/chat'
+    | '/auth/forgot'
     | '/auth/login'
     | '/auth/register'
     | '/dashboard/chat'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '/'
     | '/auth'
     | '/api/chat'
+    | '/auth/forgot'
     | '/auth/login'
     | '/auth/register'
     | '/dashboard/chat'
@@ -223,6 +235,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthLoginRouteImport
       parentRoute: typeof AuthRouteRoute
     }
+    '/auth/forgot': {
+      id: '/auth/forgot'
+      path: '/forgot'
+      fullPath: '/auth/forgot'
+      preLoaderRoute: typeof AuthForgotRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
     '/api/chat': {
       id: '/api/chat'
       path: '/api/chat'
@@ -234,11 +253,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthRouteRouteChildren {
+  AuthForgotRoute: typeof AuthForgotRoute
   AuthLoginRoute: typeof AuthLoginRoute
   AuthRegisterRoute: typeof AuthRegisterRoute
 }
 
 const AuthRouteRouteChildren: AuthRouteRouteChildren = {
+  AuthForgotRoute: AuthForgotRoute,
   AuthLoginRoute: AuthLoginRoute,
   AuthRegisterRoute: AuthRegisterRoute,
 }
