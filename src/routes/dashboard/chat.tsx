@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 import { MessageSquare, Send, Loader2, Sparkles } from "lucide-react";
 import { PageHeader, MarkdownPanel } from "@/components/page-header";
 
-export const Route = createFileRoute("/chat")({
+export const Route = createFileRoute("/dashboard/chat")({
   head: () => ({
     meta: [
       { title: "AI Chat — Workly AI" },

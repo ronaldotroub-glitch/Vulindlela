@@ -9,42 +9,42 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as ResearchRouteImport } from './routes/research'
-import { Route as PlannerRouteImport } from './routes/planner'
-import { Route as NotesRouteImport } from './routes/notes'
-import { Route as EmailRouteImport } from './routes/email'
-import { Route as ChatRouteImport } from './routes/chat'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardResearchRouteImport } from './routes/dashboard/research'
+import { Route as DashboardPlannerRouteImport } from './routes/dashboard/planner'
+import { Route as DashboardNotesRouteImport } from './routes/dashboard/notes'
+import { Route as DashboardEmailRouteImport } from './routes/dashboard/email'
+import { Route as DashboardChatRouteImport } from './routes/dashboard/chat'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
-const ResearchRoute = ResearchRouteImport.update({
-  id: '/research',
-  path: '/research',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PlannerRoute = PlannerRouteImport.update({
-  id: '/planner',
-  path: '/planner',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NotesRoute = NotesRouteImport.update({
-  id: '/notes',
-  path: '/notes',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EmailRoute = EmailRouteImport.update({
-  id: '/email',
-  path: '/email',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ChatRoute = ChatRouteImport.update({
-  id: '/chat',
-  path: '/chat',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardResearchRoute = DashboardResearchRouteImport.update({
+  id: '/dashboard/research',
+  path: '/dashboard/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardPlannerRoute = DashboardPlannerRouteImport.update({
+  id: '/dashboard/planner',
+  path: '/dashboard/planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardNotesRoute = DashboardNotesRouteImport.update({
+  id: '/dashboard/notes',
+  path: '/dashboard/notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardEmailRoute = DashboardEmailRouteImport.update({
+  id: '/dashboard/email',
+  path: '/dashboard/email',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardChatRoute = DashboardChatRouteImport.update({
+  id: '/dashboard/chat',
+  path: '/dashboard/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiChatRoute = ApiChatRouteImport.update({
@@ -55,114 +55,114 @@ const ApiChatRoute = ApiChatRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/chat': typeof ChatRoute
-  '/email': typeof EmailRoute
-  '/notes': typeof NotesRoute
-  '/planner': typeof PlannerRoute
-  '/research': typeof ResearchRoute
   '/api/chat': typeof ApiChatRoute
+  '/dashboard/chat': typeof DashboardChatRoute
+  '/dashboard/email': typeof DashboardEmailRoute
+  '/dashboard/notes': typeof DashboardNotesRoute
+  '/dashboard/planner': typeof DashboardPlannerRoute
+  '/dashboard/research': typeof DashboardResearchRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/chat': typeof ChatRoute
-  '/email': typeof EmailRoute
-  '/notes': typeof NotesRoute
-  '/planner': typeof PlannerRoute
-  '/research': typeof ResearchRoute
   '/api/chat': typeof ApiChatRoute
+  '/dashboard/chat': typeof DashboardChatRoute
+  '/dashboard/email': typeof DashboardEmailRoute
+  '/dashboard/notes': typeof DashboardNotesRoute
+  '/dashboard/planner': typeof DashboardPlannerRoute
+  '/dashboard/research': typeof DashboardResearchRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/chat': typeof ChatRoute
-  '/email': typeof EmailRoute
-  '/notes': typeof NotesRoute
-  '/planner': typeof PlannerRoute
-  '/research': typeof ResearchRoute
   '/api/chat': typeof ApiChatRoute
+  '/dashboard/chat': typeof DashboardChatRoute
+  '/dashboard/email': typeof DashboardEmailRoute
+  '/dashboard/notes': typeof DashboardNotesRoute
+  '/dashboard/planner': typeof DashboardPlannerRoute
+  '/dashboard/research': typeof DashboardResearchRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/chat'
-    | '/email'
-    | '/notes'
-    | '/planner'
-    | '/research'
     | '/api/chat'
+    | '/dashboard/chat'
+    | '/dashboard/email'
+    | '/dashboard/notes'
+    | '/dashboard/planner'
+    | '/dashboard/research'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/chat'
-    | '/email'
-    | '/notes'
-    | '/planner'
-    | '/research'
     | '/api/chat'
+    | '/dashboard/chat'
+    | '/dashboard/email'
+    | '/dashboard/notes'
+    | '/dashboard/planner'
+    | '/dashboard/research'
   id:
     | '__root__'
     | '/'
-    | '/chat'
-    | '/email'
-    | '/notes'
-    | '/planner'
-    | '/research'
     | '/api/chat'
+    | '/dashboard/chat'
+    | '/dashboard/email'
+    | '/dashboard/notes'
+    | '/dashboard/planner'
+    | '/dashboard/research'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  ChatRoute: typeof ChatRoute
-  EmailRoute: typeof EmailRoute
-  NotesRoute: typeof NotesRoute
-  PlannerRoute: typeof PlannerRoute
-  ResearchRoute: typeof ResearchRoute
   ApiChatRoute: typeof ApiChatRoute
+  DashboardChatRoute: typeof DashboardChatRoute
+  DashboardEmailRoute: typeof DashboardEmailRoute
+  DashboardNotesRoute: typeof DashboardNotesRoute
+  DashboardPlannerRoute: typeof DashboardPlannerRoute
+  DashboardResearchRoute: typeof DashboardResearchRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/research': {
-      id: '/research'
-      path: '/research'
-      fullPath: '/research'
-      preLoaderRoute: typeof ResearchRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/planner': {
-      id: '/planner'
-      path: '/planner'
-      fullPath: '/planner'
-      preLoaderRoute: typeof PlannerRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notes': {
-      id: '/notes'
-      path: '/notes'
-      fullPath: '/notes'
-      preLoaderRoute: typeof NotesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/email': {
-      id: '/email'
-      path: '/email'
-      fullPath: '/email'
-      preLoaderRoute: typeof EmailRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/chat': {
-      id: '/chat'
-      path: '/chat'
-      fullPath: '/chat'
-      preLoaderRoute: typeof ChatRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/research': {
+      id: '/dashboard/research'
+      path: '/dashboard/research'
+      fullPath: '/dashboard/research'
+      preLoaderRoute: typeof DashboardResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/planner': {
+      id: '/dashboard/planner'
+      path: '/dashboard/planner'
+      fullPath: '/dashboard/planner'
+      preLoaderRoute: typeof DashboardPlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/notes': {
+      id: '/dashboard/notes'
+      path: '/dashboard/notes'
+      fullPath: '/dashboard/notes'
+      preLoaderRoute: typeof DashboardNotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/email': {
+      id: '/dashboard/email'
+      path: '/dashboard/email'
+      fullPath: '/dashboard/email'
+      preLoaderRoute: typeof DashboardEmailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/chat': {
+      id: '/dashboard/chat'
+      path: '/dashboard/chat'
+      fullPath: '/dashboard/chat'
+      preLoaderRoute: typeof DashboardChatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/chat': {
@@ -177,12 +177,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  ChatRoute: ChatRoute,
-  EmailRoute: EmailRoute,
-  NotesRoute: NotesRoute,
-  PlannerRoute: PlannerRoute,
-  ResearchRoute: ResearchRoute,
   ApiChatRoute: ApiChatRoute,
+  DashboardChatRoute: DashboardChatRoute,
+  DashboardEmailRoute: DashboardEmailRoute,
+  DashboardNotesRoute: DashboardNotesRoute,
+  DashboardPlannerRoute: DashboardPlannerRoute,
+  DashboardResearchRoute: DashboardResearchRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

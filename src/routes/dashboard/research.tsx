@@ -8,7 +8,7 @@ import { summarizeResearch } from "@/lib/ai.functions";
 import { PageHeader, Field, inputCls, btnPrimary, MarkdownPanel } from "@/components/page-header";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/research")({
+export const Route = createFileRoute("/dashboard/research")({
   head: () => ({
     meta: [
       { title: "AI Research Assistant — Workly AI" },

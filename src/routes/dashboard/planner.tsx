@@ -8,7 +8,7 @@ import { planTasks } from "@/lib/ai.functions";
 import { PageHeader, Field, inputCls, btnPrimary, MarkdownPanel } from "@/components/page-header";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/planner")({
+export const Route = createFileRoute("/dashboard/planner")({
   head: () => ({
     meta: [
       { title: "AI Task Planner — Workly AI" },

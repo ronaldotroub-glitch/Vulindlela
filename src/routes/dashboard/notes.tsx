@@ -8,7 +8,7 @@ import { summarizeNotes } from "@/lib/ai.functions";
 import { PageHeader, Field, inputCls, btnPrimary, MarkdownPanel } from "@/components/page-header";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/notes")({
+export const Route = createFileRoute("/dashboard/notes")({
   head: () => ({
     meta: [
       { title: "Meeting Notes Summarizer — Workly AI" },

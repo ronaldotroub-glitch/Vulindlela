@@ -7,7 +7,7 @@ import { generateEmail } from "@/lib/ai.functions";
 import { PageHeader, Field, inputCls, btnPrimary } from "@/components/page-header";
 import { toast } from "sonner";
 
-export const Route = createFileRoute("/email")({
+export const Route = createFileRoute("/dashboard/email")({
   head: () => ({
     meta: [
       { title: "Smart Email Generator — Workly AI" },
