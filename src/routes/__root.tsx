@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { AppSidebar } from "@/components/app-sidebar";
 
 function NotFoundComponent() {
   return (
@@ -77,11 +78,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Workly AI — AI workplace assistant for engineering teams" },
+      { name: "description", content: "Automate emails, summarize meetings, plan tasks, and research smarter — all from one AI workspace." },
+      { name: "author", content: "Workly AI" },
+      { property: "og:title", content: "Workly AI — AI workplace assistant" },
+      { property: "og:description", content: "Automate emails, summarize meetings, plan tasks, and research smarter." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
@@ -118,8 +119,19 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="flex min-h-screen bg-background text-foreground">
+        <AppSidebar />
+        <div className="flex-1 flex flex-col min-w-0">
+          <div className="flex items-center justify-center px-4 py-2 border-b border-border bg-card/40">
+            <span className="text-xs text-muted-foreground rounded-full border border-border px-3 py-1">
+              ✶ AI-generated content may require human review
+            </span>
+          </div>
+          <main className="flex-1 overflow-y-auto">
+            <Outlet />
+          </main>
+        </div>
+      </div>
     </QueryClientProvider>
   );
 }
