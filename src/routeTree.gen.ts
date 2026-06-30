@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
 import { Route as AuthRouteRouteImport } from './routes/auth/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardResearchRouteImport } from './routes/dashboard/research'
@@ -21,6 +22,11 @@ import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as AuthForgotRouteImport } from './routes/auth/forgot'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
+const DashboardRouteRoute = DashboardRouteRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRouteRoute = AuthRouteRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -32,29 +38,29 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardResearchRoute = DashboardResearchRouteImport.update({
-  id: '/dashboard/research',
-  path: '/dashboard/research',
-  getParentRoute: () => rootRouteImport,
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardPlannerRoute = DashboardPlannerRouteImport.update({
-  id: '/dashboard/planner',
-  path: '/dashboard/planner',
-  getParentRoute: () => rootRouteImport,
+  id: '/planner',
+  path: '/planner',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardNotesRoute = DashboardNotesRouteImport.update({
-  id: '/dashboard/notes',
-  path: '/dashboard/notes',
-  getParentRoute: () => rootRouteImport,
+  id: '/notes',
+  path: '/notes',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardEmailRoute = DashboardEmailRouteImport.update({
-  id: '/dashboard/email',
-  path: '/dashboard/email',
-  getParentRoute: () => rootRouteImport,
+  id: '/email',
+  path: '/email',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const DashboardChatRoute = DashboardChatRouteImport.update({
-  id: '/dashboard/chat',
-  path: '/dashboard/chat',
-  getParentRoute: () => rootRouteImport,
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => DashboardRouteRoute,
 } as any)
 const AuthRegisterRoute = AuthRegisterRouteImport.update({
   id: '/register',
@@ -80,6 +86,7 @@ const ApiChatRoute = ApiChatRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/auth': typeof AuthRouteRouteWithChildren
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/auth/forgot': typeof AuthForgotRoute
   '/auth/login': typeof AuthLoginRoute
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/auth'
+    | '/dashboard'
     | '/api/chat'
     | '/auth/forgot'
     | '/auth/login'
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/auth'
+    | '/dashboard'
     | '/api/chat'
     | '/auth/forgot'
     | '/auth/login'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/auth'
+    | '/dashboard'
     | '/api/chat'
     | '/auth/forgot'
     | '/auth/login'
@@ -162,16 +174,19 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthRouteRoute: typeof AuthRouteRouteWithChildren
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   ApiChatRoute: typeof ApiChatRoute
-  DashboardChatRoute: typeof DashboardChatRoute
-  DashboardEmailRoute: typeof DashboardEmailRoute
-  DashboardNotesRoute: typeof DashboardNotesRoute
-  DashboardPlannerRoute: typeof DashboardPlannerRoute
-  DashboardResearchRoute: typeof DashboardResearchRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -188,38 +203,38 @@ declare module '@tanstack/react-router' {
     }
     '/dashboard/research': {
       id: '/dashboard/research'
-      path: '/dashboard/research'
+      path: '/research'
       fullPath: '/dashboard/research'
       preLoaderRoute: typeof DashboardResearchRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/planner': {
       id: '/dashboard/planner'
-      path: '/dashboard/planner'
+      path: '/planner'
       fullPath: '/dashboard/planner'
       preLoaderRoute: typeof DashboardPlannerRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/notes': {
       id: '/dashboard/notes'
-      path: '/dashboard/notes'
+      path: '/notes'
       fullPath: '/dashboard/notes'
       preLoaderRoute: typeof DashboardNotesRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/email': {
       id: '/dashboard/email'
-      path: '/dashboard/email'
+      path: '/email'
       fullPath: '/dashboard/email'
       preLoaderRoute: typeof DashboardEmailRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/dashboard/chat': {
       id: '/dashboard/chat'
-      path: '/dashboard/chat'
+      path: '/chat'
       fullPath: '/dashboard/chat'
       preLoaderRoute: typeof DashboardChatRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof DashboardRouteRoute
     }
     '/auth/register': {
       id: '/auth/register'
@@ -268,15 +283,31 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
   AuthRouteRouteChildren,
 )
 
-const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AuthRouteRoute: AuthRouteRouteWithChildren,
-  ApiChatRoute: ApiChatRoute,
+interface DashboardRouteRouteChildren {
+  DashboardChatRoute: typeof DashboardChatRoute
+  DashboardEmailRoute: typeof DashboardEmailRoute
+  DashboardNotesRoute: typeof DashboardNotesRoute
+  DashboardPlannerRoute: typeof DashboardPlannerRoute
+  DashboardResearchRoute: typeof DashboardResearchRoute
+}
+
+const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
   DashboardChatRoute: DashboardChatRoute,
   DashboardEmailRoute: DashboardEmailRoute,
   DashboardNotesRoute: DashboardNotesRoute,
   DashboardPlannerRoute: DashboardPlannerRoute,
   DashboardResearchRoute: DashboardResearchRoute,
+}
+
+const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
+  DashboardRouteRouteChildren,
+)
+
+const rootRouteChildren: RootRouteChildren = {
+  IndexRoute: IndexRoute,
+  AuthRouteRoute: AuthRouteRouteWithChildren,
+  DashboardRouteRoute: DashboardRouteRouteWithChildren,
+  ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
