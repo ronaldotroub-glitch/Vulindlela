@@ -10,11 +10,11 @@ import { useNavigate } from "@tanstack/react-router";
 
 const main = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard, exact: true },
-  { to: "/dashboard/email", label: "Email Generator", icon: Mail },
-  { to: "/dashboard/notes", label: "Meeting Summary", icon: FileText },
-  { to: "/dashboard/planner", label: "Task Planner", icon: ListTodo },
-  { to: "/dashboard/research", label: "Research", icon: Search },
-  { to: "/dashboard/chat", label: "AI Chat", icon: MessageSquare },
+  { to: "/dashboard/email", label: "Email Generator", icon: Mail, exact: false },
+  { to: "/dashboard/notes", label: "Meeting Summary", icon: FileText, exact: false },
+  { to: "/dashboard/planner", label: "Task Planner", icon: ListTodo, exact: false },
+  { to: "/dashboard/research", label: "Research", icon: Search, exact: false },
+  { to: "/dashboard/chat", label: "AI Chat", icon: MessageSquare, exact: false },
 ] as const;
 
 const secondary = [
