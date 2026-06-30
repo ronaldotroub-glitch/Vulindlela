@@ -16,7 +16,7 @@ function DashboardLayout() {
   useEffect(() => {
     const u = getUser();
     if (!u) {
-      setU({ name: "Demo User", email: "demo@workpilot.ai" });
+      setU({ name: "Demo User", email: "demo@activepilot.ai" });
     } else setU(u);
   }, [nav]);
 

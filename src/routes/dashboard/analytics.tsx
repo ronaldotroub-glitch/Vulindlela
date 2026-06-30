@@ -8,7 +8,7 @@ import {
 } from "recharts";
 
 export const Route = createFileRoute("/dashboard/analytics")({
-  head: () => ({ meta: [{ title: "Analytics — WorkPilot AI" }] }),
+  head: () => ({ meta: [{ title: "Analytics — ActivePilot AI" }] }),
   component: Analytics,
 });
 

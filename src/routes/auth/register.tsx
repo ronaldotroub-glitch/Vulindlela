@@ -5,7 +5,7 @@ import { setUser } from "@/lib/auth";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/auth/register")({
-  head: () => ({ meta: [{ title: "Sign up — WorkPilot AI" }] }),
+  head: () => ({ meta: [{ title: "Sign up — ActivePilot AI" }] }),
   component: Register,
 });
 

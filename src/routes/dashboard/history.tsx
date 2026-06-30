@@ -6,7 +6,7 @@ import { getHistory, toggleFavorite, deleteHistory, clearHistory, type HistoryIt
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/dashboard/history")({
-  head: () => ({ meta: [{ title: "History — WorkPilot AI" }] }),
+  head: () => ({ meta: [{ title: "History — ActivePilot AI" }] }),
   component: HistoryPage,
 });
 
@@ -45,7 +45,7 @@ function HistoryPage() {
     const blob = new Blob([JSON.stringify(items, null, 2)], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
-    a.href = url; a.download = "workpilot-history.json"; a.click();
+    a.href = url; a.download = "activepilot-history.json"; a.click();
     URL.revokeObjectURL(url);
   };
 
