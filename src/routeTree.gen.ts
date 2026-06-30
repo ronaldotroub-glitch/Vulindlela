@@ -16,6 +16,7 @@ import { Route as DashboardPlannerRouteImport } from './routes/dashboard/planner
 import { Route as DashboardNotesRouteImport } from './routes/dashboard/notes'
 import { Route as DashboardEmailRouteImport } from './routes/dashboard/email'
 import { Route as DashboardChatRouteImport } from './routes/dashboard/chat'
+import { Route as AuthRegisterRouteImport } from './routes/auth/register'
 import { Route as AuthLoginRouteImport } from './routes/auth/login'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
 
@@ -54,6 +55,11 @@ const DashboardChatRoute = DashboardChatRouteImport.update({
   path: '/dashboard/chat',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRegisterRoute = AuthRegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => AuthRouteRoute,
+} as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/auth/login': typeof AuthLoginRoute
+  '/auth/register': typeof AuthRegisterRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
   '/dashboard/notes': typeof DashboardNotesRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/auth/login': typeof AuthLoginRoute
+  '/auth/register': typeof AuthRegisterRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
   '/dashboard/notes': typeof DashboardNotesRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRouteRouteWithChildren
   '/api/chat': typeof ApiChatRoute
   '/auth/login': typeof AuthLoginRoute
+  '/auth/register': typeof AuthRegisterRoute
   '/dashboard/chat': typeof DashboardChatRoute
   '/dashboard/email': typeof DashboardEmailRoute
   '/dashboard/notes': typeof DashboardNotesRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/api/chat'
     | '/auth/login'
+    | '/auth/register'
     | '/dashboard/chat'
     | '/dashboard/email'
     | '/dashboard/notes'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/api/chat'
     | '/auth/login'
+    | '/auth/register'
     | '/dashboard/chat'
     | '/dashboard/email'
     | '/dashboard/notes'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/api/chat'
     | '/auth/login'
+    | '/auth/register'
     | '/dashboard/chat'
     | '/dashboard/email'
     | '/dashboard/notes'
@@ -197,6 +209,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardChatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth/register': {
+      id: '/auth/register'
+      path: '/register'
+      fullPath: '/auth/register'
+      preLoaderRoute: typeof AuthRegisterRouteImport
+      parentRoute: typeof AuthRouteRoute
+    }
     '/auth/login': {
       id: '/auth/login'
       path: '/login'
@@ -216,10 +235,12 @@ declare module '@tanstack/react-router' {
 
 interface AuthRouteRouteChildren {
   AuthLoginRoute: typeof AuthLoginRoute
+  AuthRegisterRoute: typeof AuthRegisterRoute
 }
 
 const AuthRouteRouteChildren: AuthRouteRouteChildren = {
   AuthLoginRoute: AuthLoginRoute,
+  AuthRegisterRoute: AuthRegisterRoute,
 }
 
 const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
