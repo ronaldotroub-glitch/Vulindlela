@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { MessageSquare, Send, Loader2, Sparkles } from "lucide-react";
 import { PageHeader, MarkdownPanel } from "@/components/page-header";
+import { addHistory } from "@/lib/history";
 
 export const Route = createFileRoute("/dashboard/chat")({
   head: () => ({
@@ -38,6 +39,20 @@ function ChatPage() {
 
   useEffect(() => { inputRef.current?.focus(); }, []);
   useEffect(() => { if (!loading) inputRef.current?.focus(); }, [loading]);
+
+  const lastSaved = useRef<string | null>(null);
+  useEffect(() => {
+    if (status !== "ready" || messages.length < 2) return;
+    const last = messages[messages.length - 1];
+    if (last.role !== "assistant" || last.id === lastSaved.current) return;
+    const userMsg = [...messages].reverse().find((m) => m.role === "user");
+    const text = last.parts.map((p) => (p.type === "text" ? p.text : "")).join("");
+    const userText = userMsg?.parts.map((p) => (p.type === "text" ? p.text : "")).join("") || "Chat";
+    if (text) {
+      addHistory({ kind: "chat", title: userText.slice(0, 80), preview: text.slice(0, 160), content: text });
+      lastSaved.current = last.id;
+    }
+  }, [messages, status]);
 
   const submit = async (text: string) => {
     const v = text.trim();
