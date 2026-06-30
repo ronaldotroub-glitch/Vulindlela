@@ -6,6 +6,7 @@ import { Mail, Loader2, Copy, Check } from "lucide-react";
 import { generateEmail } from "@/lib/ai.functions";
 import { PageHeader, Field, inputCls, btnPrimary } from "@/components/page-header";
 import { toast } from "sonner";
+import { addHistory } from "@/lib/history";
 
 export const Route = createFileRoute("/dashboard/email")({
   head: () => ({
@@ -28,6 +29,7 @@ function EmailPage() {
 
   const m = useMutation({
     mutationFn: () => fn({ data: { recipient, recipientType, tone, purpose, context } }),
+    onSuccess: (d: { text: string }) => addHistory({ kind: "email", title: `Email to ${recipient}`, preview: purpose || recipient, content: d.text }),
     onError: (e: Error) => toast.error(e.message),
   });
 

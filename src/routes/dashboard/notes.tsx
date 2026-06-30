@@ -7,6 +7,7 @@ import { FileText, Loader2 } from "lucide-react";
 import { summarizeNotes } from "@/lib/ai.functions";
 import { PageHeader, Field, inputCls, btnPrimary, MarkdownPanel } from "@/components/page-header";
 import { toast } from "sonner";
+import { addHistory } from "@/lib/history";
 
 export const Route = createFileRoute("/dashboard/notes")({
   head: () => ({
@@ -23,6 +24,7 @@ function NotesPage() {
   const [notes, setNotes] = useState("");
   const m = useMutation({
     mutationFn: () => fn({ data: { notes } }),
+    onSuccess: (d: { text: string }) => addHistory({ kind: "notes", title: 'Meeting summary', preview: notes.slice(0, 120), content: d.text }),
     onError: (e: Error) => toast.error(e.message),
   });
 

@@ -7,6 +7,7 @@ import { Search, Loader2 } from "lucide-react";
 import { summarizeResearch } from "@/lib/ai.functions";
 import { PageHeader, Field, inputCls, btnPrimary, MarkdownPanel } from "@/components/page-header";
 import { toast } from "sonner";
+import { addHistory } from "@/lib/history";
 
 export const Route = createFileRoute("/dashboard/research")({
   head: () => ({
@@ -24,6 +25,7 @@ function ResearchPage() {
   const [focus, setFocus] = useState("");
   const m = useMutation({
     mutationFn: () => fn({ data: { content, focus } }),
+    onSuccess: (d: { text: string }) => addHistory({ kind: "research", title: focus || 'Research summary', preview: content.slice(0, 120), content: d.text }),
     onError: (e: Error) => toast.error(e.message),
   });
 
