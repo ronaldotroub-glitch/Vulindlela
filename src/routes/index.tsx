@@ -2,8 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import {
-  Mail, FileText, ListTodo, Search, MessageSquare, ArrowRight, Check,
+  Mail, FileText, ListTodo, ArrowRight, Check,
   Sparkles, Bot, Zap, Clock, Shield, Star, ChevronDown, BrainCircuit,
+  Wifi, WifiOff, Languages, MessageSquare,
 } from "lucide-react";
 import { MarketingNav } from "@/components/marketing-nav";
 import { MarketingFooter } from "@/components/marketing-footer";
@@ -11,42 +12,43 @@ import { MarketingFooter } from "@/components/marketing-footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Vulindlela AI — Your AI Workplace Productivity Assistant" },
-      { name: "description", content: "Automate emails, meeting summaries, task planning, research, and chat with one intelligent AI assistant." },
-      { property: "og:title", content: "Vulindlela AI — Your AI Workplace Productivity Assistant" },
-      { property: "og:description", content: "One AI assistant for emails, meetings, planning, and research." },
+      { title: "Vulindlela — Open the path. AI productivity built for South Africa" },
+      { name: "description", content: "An AI workspace for SA SMEs and contractors. Draft corporate emails, summarize Imbizo voice notes, and plan grid-aware days that survive loadshedding." },
+      { property: "og:title", content: "Vulindlela — Open the path" },
+      { property: "og:description", content: "AI productivity for South African SMEs — beat loadshedding, the language tax, and admin overload." },
     ],
   }),
   component: Landing,
 });
 
 const features = [
-  { icon: Mail, title: "Smart Email Generator", desc: "Draft polished emails in seconds with tone, audience, and length control.", color: "from-indigo-500 to-violet-600" },
-  { icon: FileText, title: "Meeting Notes Summarizer", desc: "Turn raw transcripts into decisions, owners, and deadlines automatically.", color: "from-violet-500 to-fuchsia-600" },
-  { icon: ListTodo, title: "AI Task Planner", desc: "Prioritize and time-block your day or week based on urgency and workload.", color: "from-cyan-500 to-indigo-600" },
-  { icon: Search, title: "Research Assistant", desc: "Summarize technical standards, papers, and reports into plain language.", color: "from-emerald-500 to-teal-600" },
-  { icon: MessageSquare, title: "AI Chatbot", desc: "Ask anything — your workplace copilot in one conversational interface.", color: "from-amber-500 to-orange-600" },
+  { icon: Mail, title: "Smart Email Contextualizer", desc: "Draft in rough English or local slang — Vulindlela shifts it into Corporate Pitch, Client Care, or Debt Collection tone.", color: "from-emerald-500 to-teal-600" },
+  { icon: FileText, title: "Imbizo Voice & Meeting Summarizer", desc: "Turn long WhatsApp voice notes and virtual Imbizos into a 3-sentence TL;DR, action items, and hard deadlines.", color: "from-amber-500 to-orange-600" },
+  { icon: ListTodo, title: "Grid-Aware Task Planner", desc: "Tag tasks by resource (Wi-Fi, power, offline mobile). When the grid drops, Vulindlela reshuffles the day instantly.", color: "from-teal-500 to-cyan-600" },
+  { icon: Languages, title: "Corporate Language Assist", desc: "Second- or third-language English speakers ship confident proposals without the anxiety tax.", color: "from-rose-500 to-orange-500" },
+  { icon: WifiOff, title: "Low-Bandwidth by Design", desc: "Text-only summaries return instantly, even on a poor 3G connection during load-shedding recovery.", color: "from-indigo-500 to-emerald-600" },
+  { icon: MessageSquare, title: "AI Chat Copilot", desc: "One conversational surface for follow-up questions, rewrites, and next-step suggestions.", color: "from-amber-500 to-rose-600" },
 ];
 
 const stats = [
-  { value: 80, suffix: "%", label: "Reduction in repetitive work" },
-  { value: 3, suffix: "×", label: "Faster task completion" },
-  { value: 24, suffix: "/7", label: "AI availability" },
-  { value: 99, suffix: "%", label: "Productivity improvement" },
+  { value: 12, suffix: "", label: "Official SA languages we translate intent from" },
+  { value: 80, suffix: "%", label: "Less time on admin during uptime" },
+  { value: 3, suffix: "×", label: "Faster corporate email drafting" },
+  { value: 3, suffix: "G", label: "Works on low-bandwidth connections" },
 ];
 
 const faqs = [
-  { q: "What is Vulindlela AI?", a: "Vulindlela AI is an AI-powered workplace assistant that automates emails, meeting summaries, task planning, research, and workplace conversations — all in one place." },
-  { q: "Which AI models do you use?", a: "We use modern frontier models including Gemini, GPT, and Claude through a unified, modular gateway. You can switch models without changing your workflow." },
-  { q: "Is my data secure?", a: "Yes. Your data is encrypted in transit and at rest. We do not train any model on your private content, and you can delete your data at any time." },
-  { q: "Can I integrate with my tools?", a: "Yes — calendar, document, CRM, and project-management integrations are on our roadmap. The architecture is designed for easy extension." },
-  { q: "Is there a free plan?", a: "Yes. You can start free with generous limits and upgrade only when you need more capacity or premium features." },
+  { q: "What does Vulindlela mean?", a: "Vulindlela means \"Open the path\" or \"Clear the way\" in the Nguni languages. That is exactly what the product does — it clears the administrative bottleneck that stifles South African SMEs and independent contractors." },
+  { q: "Who is this built for?", a: "South African SMEs, freelancers, and contractors who lose their most valuable uptime hours to admin — pitching to retailers, chasing late payments, and summarizing long voice-note briefs." },
+  { q: "How does it handle loadshedding?", a: "The Grid-Aware Planner tags every task by resource need. When you flip to offline, we instantly reshuffle offline-safe work (reading summaries, drafting emails) to the front so a disrupted day is still a productive day." },
+  { q: "Can I write in my own English?", a: "Yes. Draft in rough, conversational English — mix in local phrases if you want. The Contextualizer translates intent into Corporate Pitch, Client Care, or firm Debt Collection tone." },
+  { q: "Will it work on a poor 3G signal?", a: "Yes. Vulindlela processes in the cloud and returns tiny text-only summaries — a 15-minute voice note becomes a three-sentence TL;DR that loads instantly." },
 ];
 
 const plans = [
-  { name: "Free", price: "$0", desc: "Try the assistant", features: ["5 AI requests/day", "Email & summary tools", "Community support"], cta: "Start free", featured: false },
-  { name: "Professional", price: "$19", desc: "For power users", features: ["Unlimited AI requests", "All 5 modules", "History & analytics", "Priority models", "Priority support"], cta: "Start Pro trial", featured: true },
-  { name: "Enterprise", price: "Custom", desc: "For organizations", features: ["SSO + role management", "SOC 2 compliance", "Custom integrations", "Dedicated success manager", "SLA"], cta: "Contact sales", featured: false },
+  { name: "Hustler", price: "R0", desc: "For solo contractors testing the path", features: ["10 AI requests/day", "Email + voice-note summariser", "Grid-aware planner"], cta: "Start free", featured: false },
+  { name: "SME", price: "R199", desc: "For growing South African teams", features: ["Unlimited AI requests", "All modules", "History & analytics", "Debt-collection tone pack", "Priority support"], cta: "Start SME trial", featured: true },
+  { name: "Enterprise", price: "Custom", desc: "For corporates and franchises", features: ["SSO + role management", "POPIA-aligned data handling", "Custom integrations", "Dedicated success manager", "SLA"], cta: "Contact sales", featured: false },
 ];
 
 function Counter({ to, suffix }: { to: number; suffix: string }) {
