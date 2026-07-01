@@ -114,28 +114,27 @@ function Landing() {
         <div className="relative max-w-7xl mx-auto px-5 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
-              <Sparkles className="size-3.5 text-primary" /> Powered by AI · Built for teams
+              <Sparkles className="size-3.5 text-primary" /> Built for South Africa · Grid-aware · POPIA-ready
             </div>
             <h1 className="mt-5 text-4xl lg:text-6xl font-extrabold tracking-tight leading-[1.05]">
-              Your{" "}
-              <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-primary)" }}>AI Workplace</span>{" "}
-              Productivity Assistant
+              <span className="bg-clip-text text-transparent" style={{ backgroundImage: "var(--gradient-primary)" }}>Vulindlela.</span>{" "}
+              Open the path through admin, loadshedding, and the language tax.
             </h1>
             <p className="mt-5 text-lg text-muted-foreground max-w-xl">
-              Automate emails, meeting summaries, task planning, research, and workplace conversations with one intelligent assistant.
+              An AI productivity workspace for South African SMEs and contractors. Draft corporate emails, summarize Imbizo voice notes, and plan a day that survives the grid.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to="/auth/register" className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-lg hover:opacity-90 transition" style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow)" }}>
-                Get Started <ArrowRight className="size-4" />
+                Clear the way <ArrowRight className="size-4" />
               </Link>
               <Link to="/dashboard" className="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold border border-border bg-card/60 backdrop-blur hover:bg-card transition">
-                Try Demo
+                Try the demo
               </Link>
             </div>
             <div className="mt-8 flex items-center gap-6 text-xs text-muted-foreground">
+              <div className="flex items-center gap-1.5"><Check className="size-3.5 text-success" /> Works on 3G</div>
+              <div className="flex items-center gap-1.5"><Check className="size-3.5 text-success" /> Loadshedding-ready</div>
               <div className="flex items-center gap-1.5"><Check className="size-3.5 text-success" /> No credit card</div>
-              <div className="flex items-center gap-1.5"><Check className="size-3.5 text-success" /> 5-min setup</div>
-              <div className="flex items-center gap-1.5"><Check className="size-3.5 text-success" /> Cancel anytime</div>
             </div>
           </motion.div>
 
@@ -151,7 +150,7 @@ function Landing() {
               <div className="pt-5 space-y-4">
                 <div className="flex justify-end">
                   <div className="rounded-2xl px-4 py-2.5 text-sm text-white max-w-[80%]" style={{ background: "var(--gradient-primary)" }}>
-                    Summarize today's project standup and draft an update for the client.
+                    Turn this 14-min voice note into an action list, then draft a firm follow-up to the retailer that hasn't paid.
                   </div>
                 </div>
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="flex gap-3">
@@ -159,9 +158,9 @@ function Landing() {
                     <Bot className="size-4 text-white" />
                   </div>
                   <div className="rounded-2xl px-4 py-3 text-sm bg-muted text-foreground/90 max-w-[85%] space-y-2">
-                    <p><strong>Standup summary</strong></p>
-                    <p>3 blockers cleared, design review on Thursday, QA running ahead of schedule.</p>
-                    <p className="text-xs text-muted-foreground">✶ Draft email ready · 87 words</p>
+                    <p><strong>Imbizo TL;DR</strong></p>
+                    <p>Site visit confirmed Fri 09h00. Deposit of R42,000 due before delivery. Sipho owns the compliance pack.</p>
+                    <p className="text-xs text-muted-foreground">✶ Debt-collection email drafted · Corporate tone · 12KB</p>
                   </div>
                 </motion.div>
               </div>
@@ -188,9 +187,9 @@ function Landing() {
       {/* Features */}
       <section id="features" className="max-w-7xl mx-auto px-5 lg:px-8 py-20">
         <div className="text-center max-w-2xl mx-auto">
-          <div className="text-xs uppercase tracking-widest text-primary font-semibold">Features</div>
-          <h2 className="text-3xl lg:text-4xl font-bold mt-2">Everything your team needs</h2>
-          <p className="mt-3 text-muted-foreground">Five AI-powered modules, one beautifully simple workspace.</p>
+          <div className="text-xs uppercase tracking-widest text-primary font-semibold">The Vulindlela Workspace</div>
+          <h2 className="text-3xl lg:text-4xl font-bold mt-2">Three core paths cleared</h2>
+          <p className="mt-3 text-muted-foreground">Corporate email confidence, Imbizo-aware summaries, and a planner that respects the grid.</p>
         </div>
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((f, i) => (
@@ -231,14 +230,14 @@ function Landing() {
       {/* Workflow */}
       <section className="max-w-5xl mx-auto px-5 lg:px-8 py-20">
         <div className="text-center max-w-2xl mx-auto">
-          <div className="text-xs uppercase tracking-widest text-primary font-semibold">Workflow</div>
-          <h2 className="text-3xl lg:text-4xl font-bold mt-2">From input to output in seconds</h2>
+          <div className="text-xs uppercase tracking-widest text-primary font-semibold">How it works</div>
+          <h2 className="text-3xl lg:text-4xl font-bold mt-2">Uptime in, action out</h2>
         </div>
         <div className="mt-12 grid md:grid-cols-3 gap-4">
           {[
-            { icon: MessageSquare, title: "User Input", desc: "Describe what you need in plain language." },
-            { icon: BrainCircuit, title: "AI Processing", desc: "Vulindlela routes your request to the best model." },
-            { icon: Zap, title: "Generated Output", desc: "Polished, editable result — ready to ship." },
+            { icon: MessageSquare, title: "Drop it in", desc: "Paste a voice-note transcript, rough email, or a week of tasks. Any English is fine." },
+            { icon: BrainCircuit, title: "Vulindlela translates intent", desc: "The AI shifts tone, extracts decisions, and tags tasks by required resources." },
+            { icon: Wifi, title: "Ship on any bandwidth", desc: "You get a tiny text-only result that loads even on a shaky 3G line during recovery." },
           ].map((step, i) => (
             <motion.div
               key={step.title}
@@ -262,14 +261,14 @@ function Landing() {
       {/* Testimonials */}
       <section className="max-w-7xl mx-auto px-5 lg:px-8 py-20">
         <div className="text-center max-w-2xl mx-auto">
-          <div className="text-xs uppercase tracking-widest text-primary font-semibold">Loved by teams</div>
-          <h2 className="text-3xl lg:text-4xl font-bold mt-2">What our users say</h2>
+          <div className="text-xs uppercase tracking-widest text-primary font-semibold">Loved by SA operators</div>
+          <h2 className="text-3xl lg:text-4xl font-bold mt-2">Voices from the path</h2>
         </div>
         <div className="mt-12 grid md:grid-cols-3 gap-5">
           {[
-            { name: "Sarah Chen", role: "Engineering Manager", company: "Acme Robotics", quote: "Vulindlela saves my team 10+ hours every week. The meeting summarizer alone is worth it." },
-            { name: "Marcus Patel", role: "Senior Project Manager", company: "BuildCo", quote: "The task planner thinks the way I do — but ten times faster. Game changer." },
-            { name: "Aisha Mensah", role: "Research Lead", company: "GreenGrid", quote: "I research engineering standards daily. Vulindlela summarizes ISO docs in seconds. Brilliant." },
+            { name: "Thandi Mkhize", role: "Founder", company: "Kasi Logistics, Soweto", quote: "Debt-collection tone got two retailers to pay in a week. English used to freeze me — now it doesn't." },
+            { name: "Sipho Nkosi", role: "Independent Contractor", company: "Durban", quote: "The Imbizo summariser turns a 12-minute WhatsApp voice note into a to-do list before the kettle boils." },
+            { name: "Lerato van der Merwe", role: "Ops Lead", company: "Cape Town SME", quote: "Stage 4 hit and my day rearranged itself. Offline drafting first, video calls later. It just works." },
           ].map((t) => (
             <div key={t.name} className="rounded-2xl border border-border bg-card p-6">
               <div className="flex gap-0.5 text-warning">
@@ -294,8 +293,8 @@ function Landing() {
       <section id="pricing" className="max-w-7xl mx-auto px-5 lg:px-8 py-20">
         <div className="text-center max-w-2xl mx-auto">
           <div className="text-xs uppercase tracking-widest text-primary font-semibold">Pricing</div>
-          <h2 className="text-3xl lg:text-4xl font-bold mt-2">Simple, transparent pricing</h2>
-          <p className="mt-3 text-muted-foreground">Start free. Upgrade when you need more.</p>
+          <h2 className="text-3xl lg:text-4xl font-bold mt-2">Rand-priced. No dollar surprises.</h2>
+          <p className="mt-3 text-muted-foreground">Start free. Scale when the SME grows.</p>
         </div>
         <div className="mt-12 grid md:grid-cols-3 gap-5">
           {plans.map((p) => (
@@ -349,13 +348,13 @@ function Landing() {
       <section className="max-w-7xl mx-auto px-5 lg:px-8 py-10">
         <div className="rounded-3xl p-10 lg:p-16 text-center border border-border" style={{ background: "var(--gradient-hero)" }}>
           <Shield className="size-10 mx-auto text-primary mb-4" />
-          <h2 className="text-3xl lg:text-4xl font-bold">Ready to reclaim your week?</h2>
-          <p className="mt-3 text-muted-foreground max-w-xl mx-auto">Start free. Cancel anytime. Your team will thank you.</p>
+          <h2 className="text-3xl lg:text-4xl font-bold">Ready to open the path?</h2>
+          <p className="mt-3 text-muted-foreground max-w-xl mx-auto">Free to start. Loadshedding-ready. Built for the way South Africans actually work.</p>
           <Link to="/auth/register" className="mt-7 inline-flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold text-white shadow-lg hover:opacity-90 transition" style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow)" }}>
-            Get Started Free <ArrowRight className="size-4" />
+            Start free <ArrowRight className="size-4" />
           </Link>
           <div className="mt-4 flex items-center justify-center gap-1.5 text-xs text-muted-foreground">
-            <Clock className="size-3.5" /> Set up in under 5 minutes
+            <Clock className="size-3.5" /> Setup takes 5 minutes — even at Stage 4
           </div>
         </div>
       </section>
