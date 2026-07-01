@@ -11,8 +11,8 @@ import { addHistory } from "@/lib/history";
 export const Route = createFileRoute("/dashboard/email")({
   head: () => ({
     meta: [
-      { title: "Smart Email Generator — Workly AI" },
-      { name: "description", content: "Draft polished engineering emails with tone control." },
+      { title: "Smart Email Contextualizer — Vulindlela" },
+      { name: "description", content: "Draft in rough English or local slang and shift into Corporate Pitch, Client Care, or Debt Collection tone." },
     ],
   }),
   component: EmailPage,
@@ -21,8 +21,8 @@ export const Route = createFileRoute("/dashboard/email")({
 function EmailPage() {
   const fn = useServerFn(generateEmail);
   const [recipient, setRecipient] = useState("");
-  const [recipientType, setRecipientType] = useState("Client");
-  const [tone, setTone] = useState("Formal");
+  const [recipientType, setRecipientType] = useState("Big Retailer (Corporate)");
+  const [tone, setTone] = useState("Corporate Pitch");
   const [purpose, setPurpose] = useState("");
   const [context, setContext] = useState("");
   const [copied, setCopied] = useState(false);
@@ -37,9 +37,9 @@ function EmailPage() {
     <div className="px-6 lg:px-10 py-8 max-w-6xl mx-auto w-full">
       <PageHeader
         icon={Mail}
-        title="Smart Email Generator"
-        description="Generate professional emails tailored to recipient type and tone."
-        tint="bg-sky-500/15 text-sky-400"
+        title="Smart Email Contextualizer"
+        description="Draft in rough English or local slang. Vulindlela shifts it into the tone the moment demands."
+        tint="bg-emerald-500/15 text-emerald-400"
       />
       <div className="grid lg:grid-cols-2 gap-6">
         <form
@@ -50,28 +50,43 @@ function EmailPage() {
           className="rounded-2xl border border-border bg-card p-6 space-y-4"
         >
           <Field label="Recipient name">
-            <input value={recipient} onChange={(e) => setRecipient(e.target.value)} required placeholder="e.g. Jane Smith" className={inputCls} />
+            <input value={recipient} onChange={(e) => setRecipient(e.target.value)} required placeholder="e.g. Ms Naidoo, Woolworths Procurement" className={inputCls} />
           </Field>
           <div className="grid grid-cols-2 gap-3">
             <Field label="Recipient type">
               <select value={recipientType} onChange={(e) => setRecipientType(e.target.value)} className={inputCls}>
-                {["Client", "Project Manager", "Supplier", "Engineering Team", "Manager", "HR"].map((o) => <option key={o}>{o}</option>)}
+                {[
+                  "Big Retailer (Corporate)",
+                  "Bank / Financial Institution",
+                  "Local Customer",
+                  "Late-Paying Client",
+                  "Supplier",
+                  "Government / Tender Office",
+                  "Team Member",
+                ].map((o) => <option key={o}>{o}</option>)}
               </select>
             </Field>
             <Field label="Tone">
               <select value={tone} onChange={(e) => setTone(e.target.value)} className={inputCls}>
-                {["Formal", "Informal", "Persuasive", "Friendly", "Apologetic", "Urgent"].map((o) => <option key={o}>{o}</option>)}
+                {[
+                  "Corporate Pitch",
+                  "Client Care",
+                  "Debt Collection",
+                  "Tender / Proposal",
+                  "Apologetic",
+                  "Urgent",
+                ].map((o) => <option key={o}>{o}</option>)}
               </select>
             </Field>
           </div>
           <Field label="Purpose">
-            <input value={purpose} onChange={(e) => setPurpose(e.target.value)} required placeholder="e.g. Send project progress update" className={inputCls} />
+            <input value={purpose} onChange={(e) => setPurpose(e.target.value)} required placeholder="e.g. Pitch our stock to Woolworths / Follow up 60-day overdue invoice" className={inputCls} />
           </Field>
-          <Field label="Additional context (optional)">
-            <textarea value={context} onChange={(e) => setContext(e.target.value)} rows={5} placeholder="Key points, dates, attachments, etc." className={inputCls} />
+          <Field label="Rough draft or context (any English, local slang welcome)">
+            <textarea value={context} onChange={(e) => setContext(e.target.value)} rows={5} placeholder={"Type it how you'd say it, eg:\n'Boss, this client is dragging feet on the 45k invoice from August, need it settled before month-end'"} className={inputCls} />
           </Field>
           <button disabled={m.isPending} className={btnPrimary} style={{ background: "var(--gradient-primary)" }}>
-            {m.isPending ? <><Loader2 className="size-4 animate-spin" /> Generating...</> : "Generate email"}
+            {m.isPending ? <><Loader2 className="size-4 animate-spin" /> Shifting tone...</> : "Contextualize & generate"}
           </button>
         </form>
 

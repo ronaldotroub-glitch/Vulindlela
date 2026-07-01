@@ -8,7 +8,7 @@ import { clearHistory } from "@/lib/history";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/dashboard/settings")({
-  head: () => ({ meta: [{ title: "Settings — ActivePilot AI" }] }),
+  head: () => ({ meta: [{ title: "Settings — Vulindlela AI" }] }),
   component: SettingsPage,
 });
 

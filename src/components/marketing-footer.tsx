@@ -33,7 +33,7 @@ export function MarketingFooter() {
           ))}
         </div>
         <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} ActivePilot AI. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} Vulindlela AI. All rights reserved.</p>
           <div className="flex items-center gap-3 text-muted-foreground">
             <a href="#" aria-label="GitHub" className="hover:text-foreground"><Github className="size-4" /></a>
             <a href="#" aria-label="Twitter" className="hover:text-foreground"><Twitter className="size-4" /></a>

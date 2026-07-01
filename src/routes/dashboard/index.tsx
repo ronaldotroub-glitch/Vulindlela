@@ -8,7 +8,7 @@ import {
 import { getHistory, type HistoryItem } from "@/lib/history";
 
 export const Route = createFileRoute("/dashboard/")({
-  head: () => ({ meta: [{ title: "Dashboard — ActivePilot AI" }] }),
+  head: () => ({ meta: [{ title: "Dashboard — Vulindlela AI" }] }),
   component: DashboardHome,
 });
 

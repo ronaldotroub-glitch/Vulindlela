@@ -12,8 +12,8 @@ import { addHistory } from "@/lib/history";
 export const Route = createFileRoute("/dashboard/notes")({
   head: () => ({
     meta: [
-      { title: "Meeting Notes Summarizer — Workly AI" },
-      { name: "description", content: "Turn raw meeting transcripts into decisions and action items." },
+      { title: "Imbizo Voice & Meeting Summarizer — Vulindlela" },
+      { name: "description", content: "Turn long WhatsApp voice notes and Imbizos into a 3-sentence TL;DR, action items, and hard deadlines." },
     ],
   }),
   component: NotesPage,
@@ -32,17 +32,17 @@ function NotesPage() {
     <div className="px-6 lg:px-10 py-8 max-w-6xl mx-auto w-full">
       <PageHeader
         icon={FileText}
-        title="Meeting Notes Summarizer"
-        description="Paste a transcript or rough notes — get key points, decisions, owners, and deadlines."
-        tint="bg-violet-500/15 text-violet-400"
+        title="Imbizo Voice & Meeting Summarizer"
+        description="Paste a WhatsApp voice-note transcript or Imbizo minutes — get a 3-sentence TL;DR, action items, decisions and hard deadlines."
+        tint="bg-amber-500/15 text-amber-400"
       />
       <div className="grid lg:grid-cols-2 gap-6">
         <form
           onSubmit={(e) => { e.preventDefault(); m.mutate(); }}
           className="rounded-2xl border border-border bg-card p-6 space-y-4"
         >
-          <Field label="Meeting notes / transcript">
-            <textarea value={notes} onChange={(e) => setNotes(e.target.value)} required rows={18} placeholder="Paste meeting notes here..." className={inputCls} />
+          <Field label="Voice-note transcript or meeting minutes">
+            <textarea value={notes} onChange={(e) => setNotes(e.target.value)} required rows={18} placeholder={"Paste the transcript of a long WhatsApp voice note, an Imbizo, or virtual meeting.\n\nVulindlela returns a low-bandwidth, text-only summary that loads on 3G."} className={inputCls} />
           </Field>
           <button disabled={m.isPending || notes.length < 10} className={btnPrimary} style={{ background: "var(--gradient-primary)" }}>
             {m.isPending ? <><Loader2 className="size-4 animate-spin" /> Summarizing...</> : "Summarize"}
