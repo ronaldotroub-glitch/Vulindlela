@@ -11,9 +11,9 @@ import { MarketingFooter } from "@/components/marketing-footer";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ActivePilot AI — Your AI Workplace Productivity Assistant" },
+      { title: "Vulindlela AI — Your AI Workplace Productivity Assistant" },
       { name: "description", content: "Automate emails, meeting summaries, task planning, research, and chat with one intelligent AI assistant." },
-      { property: "og:title", content: "ActivePilot AI — Your AI Workplace Productivity Assistant" },
+      { property: "og:title", content: "Vulindlela AI — Your AI Workplace Productivity Assistant" },
       { property: "og:description", content: "One AI assistant for emails, meetings, planning, and research." },
     ],
   }),
@@ -36,7 +36,7 @@ const stats = [
 ];
 
 const faqs = [
-  { q: "What is ActivePilot AI?", a: "ActivePilot AI is an AI-powered workplace assistant that automates emails, meeting summaries, task planning, research, and workplace conversations — all in one place." },
+  { q: "What is Vulindlela AI?", a: "Vulindlela AI is an AI-powered workplace assistant that automates emails, meeting summaries, task planning, research, and workplace conversations — all in one place." },
   { q: "Which AI models do you use?", a: "We use modern frontier models including Gemini, GPT, and Claude through a unified, modular gateway. You can switch models without changing your workflow." },
   { q: "Is my data secure?", a: "Yes. Your data is encrypted in transit and at rest. We do not train any model on your private content, and you can delete your data at any time." },
   { q: "Can I integrate with my tools?", a: "Yes — calendar, document, CRM, and project-management integrations are on our roadmap. The architecture is designed for easy extension." },
@@ -144,7 +144,7 @@ function Landing() {
                 <div className="size-2.5 rounded-full bg-danger/80" />
                 <div className="size-2.5 rounded-full bg-warning/80" />
                 <div className="size-2.5 rounded-full bg-success/80" />
-                <div className="ml-3 text-xs text-muted-foreground">activepilot.ai/chat</div>
+                <div className="ml-3 text-xs text-muted-foreground">vulindlela.ai/chat</div>
               </div>
               <div className="pt-5 space-y-4">
                 <div className="flex justify-end">
@@ -235,7 +235,7 @@ function Landing() {
         <div className="mt-12 grid md:grid-cols-3 gap-4">
           {[
             { icon: MessageSquare, title: "User Input", desc: "Describe what you need in plain language." },
-            { icon: BrainCircuit, title: "AI Processing", desc: "ActivePilot routes your request to the best model." },
+            { icon: BrainCircuit, title: "AI Processing", desc: "Vulindlela routes your request to the best model." },
             { icon: Zap, title: "Generated Output", desc: "Polished, editable result — ready to ship." },
           ].map((step, i) => (
             <motion.div
@@ -265,9 +265,9 @@ function Landing() {
         </div>
         <div className="mt-12 grid md:grid-cols-3 gap-5">
           {[
-            { name: "Sarah Chen", role: "Engineering Manager", company: "Acme Robotics", quote: "ActivePilot saves my team 10+ hours every week. The meeting summarizer alone is worth it." },
+            { name: "Sarah Chen", role: "Engineering Manager", company: "Acme Robotics", quote: "Vulindlela saves my team 10+ hours every week. The meeting summarizer alone is worth it." },
             { name: "Marcus Patel", role: "Senior Project Manager", company: "BuildCo", quote: "The task planner thinks the way I do — but ten times faster. Game changer." },
-            { name: "Aisha Mensah", role: "Research Lead", company: "GreenGrid", quote: "I research engineering standards daily. ActivePilot summarizes ISO docs in seconds. Brilliant." },
+            { name: "Aisha Mensah", role: "Research Lead", company: "GreenGrid", quote: "I research engineering standards daily. Vulindlela summarizes ISO docs in seconds. Brilliant." },
           ].map((t) => (
             <div key={t.name} className="rounded-2xl border border-border bg-card p-6">
               <div className="flex gap-0.5 text-warning">
